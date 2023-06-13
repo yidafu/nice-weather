@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "weather"
+rootProject.name = "NiceWeather"
 include(":androidApp")
 include(":shared")

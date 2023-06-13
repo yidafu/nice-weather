@@ -3,6 +3,9 @@ plugins {
     kotlin("android")
 }
 
+val ktorVersion: String by project
+val coroutinesVersion: String by project
+
 android {
     namespace = "dev.yidafu.app.weather.android"
     compileSdk = 33
@@ -46,4 +49,5 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.4.0")
     implementation("androidx.compose.material:material:1.4.0")
     implementation("androidx.activity:activity-compose:1.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 }

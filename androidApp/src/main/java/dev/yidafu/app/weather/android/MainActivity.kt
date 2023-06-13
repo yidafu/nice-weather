@@ -1,11 +1,13 @@
 package dev.yidafu.app.weather.android
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dev.yidafu.app.weather.Greeting
@@ -17,9 +19,13 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colors.background,
                 ) {
-                    GreetingView(Greeting().greet())
+                    LaunchedEffect(true) {
+                        val data = Greeting().greet()
+                        Log.i("Main", data)
+                    }
+                    GreetingView("XXX")
                 }
             }
         }
