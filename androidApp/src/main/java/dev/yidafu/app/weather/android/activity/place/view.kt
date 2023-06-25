@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.yidafu.app.weather.android.R
-import dev.yidafu.app.weather.android.activity.place.ui.theme.NiceWeatherTheme
+import dev.yidafu.app.weather.android.theme.NiceWeatherTheme
 import dev.yidafu.app.weather.android.common.painterResourceCompat
 
 @Composable
@@ -41,6 +41,7 @@ fun PlaceView(name: String, modifier: Modifier = Modifier) {
     val placeVm: PlaceViewModel = viewModel()
 
     val placeList = placeVm.placeLiveData.observeAsState()
+    val realtime = placeVm.realtime.observeAsState()
     var query by remember {
         mutableStateOf("")
     }

@@ -10,7 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import dev.yidafu.app.weather.android.activity.place.ui.theme.NiceWeatherTheme
+import dev.yidafu.app.weather.android.theme.NiceWeatherTheme
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

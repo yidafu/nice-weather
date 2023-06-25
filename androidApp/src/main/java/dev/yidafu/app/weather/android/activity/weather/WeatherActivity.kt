@@ -1,26 +1,20 @@
-package dev.yidafu.app.weather.android.activity.place
+package dev.yidafu.app.weather.android.activity.weather
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import dev.yidafu.app.weather.android.R
 import dev.yidafu.app.weather.android.theme.NiceWeatherTheme
+import dev.yidafu.app.weather.bean.vo.SkyVO
 
-class PlaceActivity : ComponentActivity() {
+class WeatherActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,11 +22,27 @@ class PlaceActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background,
+                    color = MaterialTheme.colorScheme.background,
                 ) {
-                    PlaceView("Android")
+                    Greeting("Android")
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier,
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview2() {
+    NiceWeatherTheme {
+        Greeting("Android")
     }
 }

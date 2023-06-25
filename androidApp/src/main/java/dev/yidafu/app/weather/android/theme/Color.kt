@@ -1,4 +1,4 @@
-package dev.yidafu.app.weather.android.activity.place.ui.theme
+package dev.yidafu.app.weather.android.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -69,11 +69,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
 // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.0")
-
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0")
     implementation(platform("androidx.compose:compose-bom:2022.10.00"))
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.material3:material3")
+    implementation(platform("androidx.compose:compose-bom:2022.10.00"))
     androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
