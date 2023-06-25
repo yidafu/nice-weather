@@ -1,7 +1,7 @@
-package dev.yidafu.app.weather.bean.param
+package dev.yidafu.app.weather.bean.request
 
+import dev.yidafu.app.weather.bean.response.Location
 import dev.yidafu.app.weather.constants.WEATHER_TOKEN
-import dev.yidafu.app.weather.network.Location
 import io.ktor.resources.Resource
 
 @Resource("/v2.6")
@@ -18,11 +18,15 @@ class V2dot6() {
         ) {
             @Resource("realtime")
             class RealTime(private val location: Location, val parent: ApiLocation = ApiLocation(location))
+
+            @Resource("daily")
+            class Daily(private val location: Location, val parent: ApiLocation = ApiLocation(location))
         }
     }
 }
 
 typealias RealTimeRequest = V2dot6.Token.ApiLocation.RealTime
+typealias DailyRequest = V2dot6.Token.ApiLocation.Daily
 
 @Resource("/v2")
 class V2() {
