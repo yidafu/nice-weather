@@ -56,7 +56,7 @@ fun getSky(type: String?): SkyVO {
 fun Now() {
     val type = "CLEAR_DAY"
     val viewModel: WeatherViewModel = viewModel()
-
+    val placeNameState = viewModel.placeName.observeAsState()
     val weatherState = viewModel.weatherLv.observeAsState()
     Column(
         modifier = Modifier
@@ -70,7 +70,7 @@ fun Now() {
                 .padding(top = 70.dp),
         ) {
             Text(
-                text = "",
+                text = placeNameState.value ?: "",
                 modifier = Modifier
                     .padding(horizontal = 60.dp)
                     .fillMaxWidth(),

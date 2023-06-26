@@ -9,6 +9,7 @@ import dev.yidafu.app.weather.bean.response.Location
 import dev.yidafu.app.weather.bean.vo.WeatherVO
 
 class WeatherViewModel : ViewModel() {
+    val placeName = MutableLiveData("")
     private val locationLv = MutableLiveData(Location(lat = 30.222719, lng = 120.121282))
 
     val weatherLv: LiveData<WeatherVO> = locationLv.switchMap { location ->

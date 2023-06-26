@@ -1,9 +1,12 @@
 package dev.yidafu.app.weather.android.activity.place
 
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,20 +29,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.yidafu.app.weather.android.R
-import dev.yidafu.app.weather.android.theme.NiceWeatherTheme
+import dev.yidafu.app.weather.android.activity.weather.WeatherActivity
 import dev.yidafu.app.weather.android.common.painterResourceCompat
+import dev.yidafu.app.weather.android.theme.NiceWeatherTheme
 
 @Composable
 fun PlaceView(name: String, modifier: Modifier = Modifier) {
     val placeVm: PlaceViewModel = viewModel()
-
+    val context = LocalContext.current
     val placeList = placeVm.placeLiveData.observeAsState()
     val realtime = placeVm.realtime.observeAsState()
     var query by remember {
@@ -81,7 +87,14 @@ fun PlaceView(name: String, modifier: Modifier = Modifier) {
             ) {
                 items(items = placeList.value!!, key = { it.id }) { place ->
                     Card(
-                        modifier.fillMaxWidth().padding(12.dp),
+                        modifier.fillMaxWidth().padding(12.dp).clickable {
+                            val intent = Intent(context, WeatherActivity::class.java).apply {
+                                putExtra("location_lng", place.location.lng)
+                                putExtra("location_lat", place.location.lat)
+                                putExtra("place_name", place.name)
+                            }
+                            context.startActivity(intent)
+                        },
                         elevation = 10.dp,
                     ) {
                         Column(
