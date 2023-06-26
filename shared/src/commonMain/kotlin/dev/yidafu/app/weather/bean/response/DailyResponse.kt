@@ -3,6 +3,7 @@ package dev.yidafu.app.weather.bean.response
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Serializable
 data class DailyResponse(
     @SerialName("api_status")
     val api_status: String,
@@ -11,8 +12,8 @@ data class DailyResponse(
     val lang: String,
     val location: List<Double>,
     val result: Result,
-    @SerialName("serverTime")
-    val server_time: Int,
+    @SerialName("server_time")
+    val serverTime: Int,
     val status: String,
     val timezone: String,
     val tzshift: Int,
@@ -74,18 +75,18 @@ data class DailyResponse(
 
     @Serializable
     data class Cloudrate(
-        val avg: Double,
+        val avg: Float,
         val date: String,
-        val max: Int,
-        val min: Int,
+        val max: Float,
+        val min: Float,
     )
 
     @Serializable
     data class Dswrf(
         val avg: Double,
         val date: String,
-        val max: Double,
-        val min: Int,
+        val max: Float,
+        val min: Float,
     )
 
     @Serializable
@@ -107,20 +108,11 @@ data class DailyResponse(
 
     @Serializable
     data class Precipitation(
-        val avg: Int,
+        val avg: Float,
         val date: String,
-        val max: Int,
-        val min: Int,
-        val probability: Int,
-    )
-
-    @Serializable
-    data class Precipitation08h20h(
-        val avg: Int,
-        val date: String,
-        val max: Int,
-        val min: Int,
-        val probability: Int,
+        val max: Float,
+        val min: Float,
+        val probability: Float,
     )
 
     @Serializable
@@ -141,58 +133,52 @@ data class DailyResponse(
     data class Temperature(
         val avg: Double,
         val date: String,
-        val max: Int,
-        val min: Int,
+        val max: Float,
+        val min: Float,
     )
 
     @Serializable
     data class Visibility(
-        val avg: Int,
+        val avg: Float,
         val date: String,
-        val max: Int,
+        val max: Float,
         val min: Double,
     )
 
     @Serializable
     data class Wind(
-        val avg: Avg,
+        val avg: WindRange,
         val date: String,
-        val max: Max,
-        val min: Min,
+        val max: WindRange,
+        val min: WindRange,
     )
 
     @Serializable
     data class Aqi(
-        val avg: Avg,
+        val avg: Range,
         val date: String,
-        val max: Max,
-        val min: Min,
+        val max: Range,
+        val min: Range,
     )
 
     @Serializable
     data class Pm25(
-        val avg: Int,
+        val avg: Float,
         val date: String,
-        val max: Int,
-        val min: Int,
+        val max: Float,
+        val min: Float,
     )
 
     @Serializable
-    data class Avg(
-        val chn: Int,
-        val usa: Int,
-    )
-
-    @Serializable
-    data class Max(
+    data class Range(
         val chn: Float,
         val usa: Float,
     )
 
     @Serializable
-    data class Min(
-        val chn: Float,
-        val usa: Float,
+    data class WindRange(
+        val speed: Float,
+        val direction: Float,
     )
 
     @Serializable

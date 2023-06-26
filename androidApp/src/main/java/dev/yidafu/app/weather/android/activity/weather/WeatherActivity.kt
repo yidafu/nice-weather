@@ -3,16 +3,17 @@ package dev.yidafu.app.weather.android.activity.weather
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.yidafu.app.weather.android.R
+import dev.yidafu.app.weather.android.activity.place.Forecast
 import dev.yidafu.app.weather.android.theme.NiceWeatherTheme
-import dev.yidafu.app.weather.bean.vo.SkyVO
 
 class WeatherActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class WeatherActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    Greeting("Android")
+                    Weather()
                 }
             }
         }
@@ -32,17 +33,23 @@ class WeatherActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
+fun Weather() {
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+        Now()
+        Forecast()
+        LifeIndex()
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+fun WeatherPreview() {
     NiceWeatherTheme {
-        Greeting("Android")
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background,
+        ) {
+            Weather()
+        }
     }
 }

@@ -91,7 +91,7 @@ fun Now() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun NowPreview() {
     Now()
